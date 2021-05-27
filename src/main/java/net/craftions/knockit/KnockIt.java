@@ -50,15 +50,13 @@ public final class KnockIt extends JavaPlugin {
         System.out.println(prefix + "Successfully loaded KnockIt!");
     }
 
-    @Override
-    public void onDisable() {
-    }
-
     public static Inventory getDefaultInventory(){
         Inventory inv = Bukkit.createInventory(null, InventoryType.PLAYER);
         ItemStack stick = new ItemStack(Material.STICK);
+        ItemStack blocks = new ItemStack(Material.SANDSTONE, 64);
         stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 2);
         inv.setItem(0, stick);
+        inv.setItem(1, blocks);
         return null;
     }
 }
