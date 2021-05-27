@@ -2,10 +2,7 @@ package net.craftions.knockit;
 
 import net.craftions.knockit.commands.CommandSetSpawn;
 import net.craftions.knockit.config.Config;
-import net.craftions.knockit.events.EventBlockPlace;
-import net.craftions.knockit.events.EventInventoryClick;
-import net.craftions.knockit.events.EventPlayerRespawn;
-import net.craftions.knockit.events.EventPlayerJoin;
+import net.craftions.knockit.events.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -21,9 +18,11 @@ public final class KnockIt extends JavaPlugin {
 
     public static String prefix = "§7[§cKnock§9It§7] §r";
     public static Config config = null;
+    protected static KnockIt instance;
 
     @Override
     public void onEnable() {
+        instance = this;
         System.out.println(prefix + "Loading KnockIt v" + this.getDescription().getVersion() + "...");
         // prepare configuration
         File rootDir = new File("plugins/KnockIt");
@@ -46,6 +45,7 @@ public final class KnockIt extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventPlayerRespawn(), this);
         Bukkit.getPluginManager().registerEvents(new EventBlockPlace(), this);
         Bukkit.getPluginManager().registerEvents(new EventInventoryClick(), this);
+        Bukkit.getPluginManager().registerEvents(new EventPlayerDeath(), this);
         // finish
         System.out.println(prefix + "Successfully loaded KnockIt!");
     }
@@ -58,5 +58,9 @@ public final class KnockIt extends JavaPlugin {
         inv.setItem(0, stick);
         inv.setItem(1, blocks);
         return null;
+    }
+
+    public static KnockIt getInstance(){
+        return instance;
     }
 }
