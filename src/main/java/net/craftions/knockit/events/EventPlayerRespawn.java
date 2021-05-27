@@ -7,15 +7,15 @@ import net.craftions.knockit.KnockIt;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
-public class EventPlayerJoin implements Listener {
+public class EventPlayerRespawn implements Listener {
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e){
-        e.setJoinMessage(KnockIt.prefix + "§c" + e.getPlayer().getName() + " §7joined the game.");
+    public void onRespawn(PlayerRespawnEvent e){
         if(KnockIt.config.get("spawn") != null){
-            e.getPlayer().teleport((Location) KnockIt.config.get("spawn"));
+            e.setRespawnLocation((Location) KnockIt.config.get("spawn"));
         }else {
             e.getPlayer().sendMessage(KnockIt.prefix + "§7The spawn was §cnot §7set yet. Set it using §a/setspawn");
         }

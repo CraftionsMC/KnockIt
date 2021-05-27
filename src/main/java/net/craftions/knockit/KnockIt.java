@@ -4,7 +4,7 @@ import net.craftions.knockit.commands.CommandSetSpawn;
 import net.craftions.knockit.config.Config;
 import net.craftions.knockit.events.EventBlockPlace;
 import net.craftions.knockit.events.EventInventoryClick;
-import net.craftions.knockit.events.EventPlayerDeath;
+import net.craftions.knockit.events.EventPlayerRespawn;
 import net.craftions.knockit.events.EventPlayerJoin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -43,7 +43,7 @@ public final class KnockIt extends JavaPlugin {
         getCommand("setspawn").setExecutor(new CommandSetSpawn());
         // register events
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
-        Bukkit.getPluginManager().registerEvents(new EventPlayerDeath(), this);
+        Bukkit.getPluginManager().registerEvents(new EventPlayerRespawn(), this);
         Bukkit.getPluginManager().registerEvents(new EventBlockPlace(), this);
         Bukkit.getPluginManager().registerEvents(new EventInventoryClick(), this);
         // finish
