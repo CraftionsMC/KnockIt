@@ -55,9 +55,16 @@ public final class KnockIt extends JavaPlugin {
         Inventory inv = Bukkit.createInventory(null, InventoryType.PLAYER);
         ItemStack stick = new ItemStack(Material.STICK);
         ItemStack blocks = new ItemStack(Material.SANDSTONE, 64);
-        stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 2);
-        inv.setItem(0, stick);
-        inv.setItem(1, blocks);
+        ItemStack sword = new ItemStack(Material.WOODEN_SWORD);
+        stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 1);
+        sword.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);
+        inv.setItem(39, new ItemStack(Material.LEATHER_HELMET));
+        inv.setItem(38, new ItemStack(Material.LEATHER_CHESTPLATE));
+        inv.setItem(37, new ItemStack(Material.LEATHER_LEGGINGS));
+        inv.setItem(36, new ItemStack(Material.LEATHER_BOOTS));
+        inv.setItem(0, sword);
+        inv.setItem(1, stick);
+        inv.setItem(2, blocks);
         return inv;
     }
 
