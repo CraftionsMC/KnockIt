@@ -13,6 +13,7 @@ public class EventPlayerJoin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
+        e.getPlayer().getInventory().setContents(KnockIt.getDefaultInventory().getContents());
         e.setJoinMessage(KnockIt.prefix + "§c" + e.getPlayer().getName() + " §7joined the game.");
         if(KnockIt.config.get("spawn") != null){
             e.getPlayer().teleport((Location) KnockIt.config.get("spawn"));

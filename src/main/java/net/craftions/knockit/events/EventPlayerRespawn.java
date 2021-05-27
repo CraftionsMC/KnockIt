@@ -14,6 +14,7 @@ public class EventPlayerRespawn implements Listener {
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e){
+        e.getPlayer().getInventory().setContents(KnockIt.getDefaultInventory().getContents());
         if(KnockIt.config.get("spawn") != null){
             e.setRespawnLocation((Location) KnockIt.config.get("spawn"));
         }else {

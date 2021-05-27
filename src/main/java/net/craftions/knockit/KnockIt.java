@@ -46,6 +46,7 @@ public final class KnockIt extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventBlockPlace(), this);
         Bukkit.getPluginManager().registerEvents(new EventInventoryClick(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerDeath(), this);
+        Bukkit.getPluginManager().registerEvents(new EventItemDrop(), this);
         // finish
         System.out.println(prefix + "Successfully loaded KnockIt!");
     }
@@ -57,7 +58,7 @@ public final class KnockIt extends JavaPlugin {
         stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 2);
         inv.setItem(0, stick);
         inv.setItem(1, blocks);
-        return null;
+        return inv;
     }
 
     public static KnockIt getInstance(){
