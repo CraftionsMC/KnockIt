@@ -4,3 +4,7 @@ main: net.craftions.knockit.KnockIt
 api-version: 1.16
 authors: [ MCTzOCK ]
 website: https://craftions.net
+commands:
+  setspawn:
+    usage: /<command>
+    permission: craftions.knockit.command.setspawn
