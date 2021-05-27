@@ -3,9 +3,15 @@ package net.craftions.knockit;
 import net.craftions.knockit.commands.CommandSetSpawn;
 import net.craftions.knockit.config.Config;
 import net.craftions.knockit.events.EventBlockPlace;
+import net.craftions.knockit.events.EventInventoryClick;
 import net.craftions.knockit.events.EventPlayerDeath;
 import net.craftions.knockit.events.EventPlayerJoin;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -39,11 +45,20 @@ public final class KnockIt extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerDeath(), this);
         Bukkit.getPluginManager().registerEvents(new EventBlockPlace(), this);
+        Bukkit.getPluginManager().registerEvents(new EventInventoryClick(), this);
         // finish
         System.out.println(prefix + "Successfully loaded KnockIt!");
     }
 
     @Override
     public void onDisable() {
+    }
+
+    public static Inventory getDefaultInventory(){
+        Inventory inv = Bukkit.createInventory(null, InventoryType.PLAYER);
+        ItemStack stick = new ItemStack(Material.STICK);
+        stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 2);
+        inv.setItem(0, stick);
+        return null;
     }
 }
